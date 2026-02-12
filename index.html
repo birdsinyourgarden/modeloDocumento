@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+</head>
+<body>
+    <!-- 1 -->
+    <h1 id="title">Título original</h1>
+    
+    <!-- 2 -->
+    <p class="text">1</p>
+    <p class="text">2</p>
+    <p class="text">3</p>
+
+    <!-- 3 -->
+    <p>Párrafo 1</p>
+    <p>Párrafo 2</p>
+    
+    <!-- 4 -->
+    <div id="box">Contenido original</div>
+    <button id="btn4">Cambiar</button>
+
+    <!-- 5 -->
+    <img id="image" src="https://tse3.mm.bing.net/th/id/OIP.s7rBZlsrPRi4joJVG6LoHQHaFS?rs=1&pid=ImgDetMain&o=7&rm=3" alt="fruta variada" width="100">
+    <button id="btn5">Cambiar imagen</button>
+
+    <!-- 6 -->
+    <input id="text" type="text" disabled>
+    <button id="btn6">Habilitar texto</button>
+
+    <!-- 7 -->
+    <p id="paragraph7">Texto de prueba</p>
+    <button id="btn7">Cambiar estilo</button>
+
+    <!-- 8 -->
+    <div id="box8" class="base">Caja</div>
+    <button id="btn8">Alternar clase</button>
+
+    <style>
+        .base {
+            width: 100px;
+            height: 100px;
+            background-color: gray;
+        }
+
+        .active {
+            background-color: green;
+        }
+    </style>
+
+    <!-- 9 -->
+    <div id="box9" class="activa9"></div>
+
+    <script>
+        // 1
+        document.getElementById("title").textContent = "DOM cargado correctamente";
+
+        // 2
+        const paragraph = document.getElementsByClassName("text");
+        for (let p of paragraph) p.style.color = "blue";
+
+        // 3
+        document.querySelector("p").textContent = "Texto modificado";
+
+        // 4
+        document.getElementById("btn4").addEventListener("click", () => {
+            document.getElementById("box").textContent = "Contenido cambiado"
+        });
+
+        // 5
+        /* document.getElementById("btn5").addEventListener("click", () => {
+            document.getElementById("image").setAttribute("src", "https://www.pitayafenicia.es/_next/image?url=%2Fimages%2Fblog%2Fpitaya-la-fruta-exotica-6.webp&w=1920&q=75")
+        }); */ 
+
+        // alternar imágenes (versión 2 ejercicio 5)
+        /* const image1 = document.getElementById("image");
+        const button = document.getElementById("btn5");
+
+        btn5.addEventListener("click", () => {
+            if (image1.src.includes("https://tse3.mm.bing.net/th/id/OIP.s7rBZlsrPRi4joJVG6LoHQHaFS?rs=1&pid=ImgDetMain&o=7&rm=3")) {
+                image1.src = "https://www.pitayafenicia.es/_next/image?url=%2Fimages%2Fblog%2Fpitaya-la-fruta-exotica-6.webp&w=1920&q=75"
+            } else {
+                image1.src = "https://tse3.mm.bing.net/th/id/OIP.s7rBZlsrPRi4joJVG6LoHQHaFS?rs=1&pid=ImgDetMain&o=7&rm=3"
+            }
+        }); */
+
+        // versión 3 del ejercicio 5
+        const images = ["https://tse3.mm.bing.net/th/id/OIP.s7rBZlsrPRi4joJVG6LoHQHaFS?rs=1&pid=ImgDetMain&o=7&rm=3", "https://www.pitayafenicia.es/_next/image?url=%2Fimages%2Fblog%2Fpitaya-la-fruta-exotica-6.webp&w=1920&q=75", "https://frutropic.com/cdn/shop/articles/9C97801E-1D29-48B5-94A5-995772050934_51a8ebf2-1b13-4005-9a5e-5f1b5c9ed127.jpg?v=1749195195&width=1100"];
+        let index = 0;
+
+        document.getElementById("btn5").addEventListener("click", () => {
+            index++;
+            if (index >= images.length) index = 0;
+            document.getElementById("image").setAttribute("src", images[index]);
+        });
+
+        // 6
+        document.getElementById("btn6").addEventListener("click", () => {
+            document.getElementById("text").removeAttribute("disabled");
+        });
+
+        // 7
+        document.getElementById("btn7").addEventListener("click", () => {
+            const p = document.getElementById("paragraph7");
+            p.style.backgroundColor = "yellow";
+            p.style.fontSize = "20px";
+        });
+
+        // 8
+        document.getElementById("btn8").addEventListener("click", () => {
+            document.getElementById("box8").classList.toggle("active");
+        });
+
+        // 9
+        const box9 = document.getElementById("box9");
+        if (box9.classList.contains("active9")) console.log("Tiene clase activa");
+        else console.log("N0 tiene la clase activa");
+    </script>
+</body>
+</html>
