@@ -53,6 +53,37 @@
     <!-- 9 -->
     <div id="box9" class="activa9"></div>
 
+    <!-- 10 -->
+    <button id="btn10">Crear párrafo</button>
+
+    <!-- 11 -->
+    <ul id="list"></ul>
+    <button id="btn11">Añadir</button>
+
+    <!-- 12 -->
+    <ul id="list12">
+        <li>Uno</li>
+        <li>Dos</li>
+        <li>Tres</li>
+    </ul>
+    <button id="btn12">Eliminar último</button>
+    
+    <!-- 13 -->
+    <div id="parent">
+        <p id="children">Texto</p>
+    </div>
+
+    <!-- 14 -->
+    <p id="first">Primero</p>
+    <p>Segundo</p>
+
+    <!-- 15 -->
+    <div id="container">
+        <p>Uno</p>
+        <p>Dos</p>
+        <p>Tres</p>
+    </div>
+
     <script>
         // 1
         document.getElementById("title").textContent = "DOM cargado correctamente";
@@ -117,6 +148,52 @@
         const box9 = document.getElementById("box9");
         if (box9.classList.contains("active9")) console.log("Tiene clase activa");
         else console.log("N0 tiene la clase activa");
+
+        // 10
+        const button = document.getElementById("btn10");
+
+        button.addEventListener("click", () => {
+            const p = document.createElement("p");
+            p.textContent = "Nuevo párrafo creado";
+            document.body.appendChild(p);
+        });
+
+        // 11
+        const list1 = document.getElementById("list");
+        const button11 = document.getElementById("btn11");
+        let counter = 1;
+
+        button11.addEventListener("click", () => {
+            const li = document.createElement("li");
+            li.textContent = "Elemento " + counter;
+            counter++;
+            list1.appendChild(li);
+        });
+
+        // 12
+        const list12 = document.getElementById("list12");
+        const button12 = document.getElementById("btn12");
+
+        button12.addEventListener("click", () => {
+            if (list12.lastElementChild) {
+                list12.lastElementChild.remove();
+            }
+        });
+
+        // 13
+        const children13 = document.getElementById("children");
+        children13.parentNode.style.backgroundColor = "red";
+
+        // 14 
+        const first1 = document.getElementById("first");
+        first1.nextElementSibling.textContent = "Texto cambiado";
+
+        // 15
+        const container1 = document.getElementById("container");
+
+        for (let children1 of container.children) {
+            children1.style.color = "red";
+        }
     </script>
 </body>
 </html>
